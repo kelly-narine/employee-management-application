@@ -8,7 +8,7 @@ data-backdrop="static" data-keyboard="false">
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="exampleModalLabel">{{ModalTitle}}</h5>
@@ -37,7 +37,12 @@ data-backdrop="static" data-keyboard="false">
       <td>{{dataItem.DepartmentId}}</td>
       <td>{{dataItem.DepartmentName}}</td>
       <td>
-        <button type="button" class="btn btn-light mr-1">Edit</button>
+        <button type="button" class="btn btn-light mr-1"
+        data-toggle="modal" data-target="#exampleModal" 
+        (click)="editClick(dataItem)"
+        data-backdrop="static" data-keyboard="false">
+          Edit
+        </button>
         <button type="button" class="btn btn-light mr-1">Delete</button>
       </td>
     </tr>
