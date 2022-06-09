@@ -35,19 +35,36 @@ export class AddEditEmpComponent implements OnInit {
     });
   }
 
-  addDepartment() {
-    var val = {DepartmentId: this.DepartmentId,
-               DepartmentName: this.DepartmentName};
-    this.service.addDepartment(val).subscribe(res=>{
+  addEmployee() {
+    var val = {EmployeeId: this.EmployeeId,
+               EmployeeName: this.EmployeeName,
+               Department: this.Department,
+               DateOfJoining: this.DateOfJoining,
+               PhotoFileName: this.PhotoFileName};
+    this.service.addEmployee(val).subscribe(res=>{
       alert(res.toString());
     });
   }
 
-  updateDepartment() {
-    var val = {DepartmentId: this.DepartmentId,
-               DepartmentName: this.DepartmentName};
-    this.service.updateDepartment(val).subscribe(res=>{
+  updateEmployee() {
+    var val = {EmployeeId: this.EmployeeId,
+               EmployeeName: this.EmployeeName,
+               Department: this.Department,
+               DateOfJoining: this.DateOfJoining,
+               PhotoFileName: this.PhotoFileName};
+    this.service.updateEmployee(val).subscribe(res=>{
       alert(res.toString());
+    });
+  }
+
+  uploadPhoto(event:any) {
+    var file = event.target.files[0];
+    const formData:FormData = new FormData();
+    formData.append('uploadedFile', file, file.name);
+
+    this.service.UploadPhoto(formData).subscribe((data:any)=>{
+      this.PhotoFileName = data.toString();
+      this.PhotoFilePath = this.service.PhotoUrl + this.PhotoFileName;
     });
   }
 
