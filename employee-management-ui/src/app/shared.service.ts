@@ -7,7 +7,7 @@ import { Observable } from 'rxjs'; //observables used to handle asyschronus requ
 })
 export class SharedService {
   readonly APIUrl = 'http://localhost:61661/api'
-  readonly PhotoUrl = 'http://localhost:61661/Photos'
+  readonly PhotoUrl = 'http://localhost:61661/Photos/'
   
   constructor(private http:HttpClient) { }
 
